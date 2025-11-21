@@ -4,6 +4,7 @@ import { MARKET_OVERVIEW_WIDGET_CONFIG } from "@/lib/constants";
 import { TOP_STORIES_WIDGET_CONFIG } from "@/lib/constants";
 import { MARKET_DATA_WIDGET_CONFIG } from "@/lib/constants";
 
+
 const Home = () => {
     const scriptTemplate = "https://s3.tradingview.com/external-embedding/embed-widget-"
     return (
