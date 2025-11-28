@@ -5,7 +5,9 @@ import { Button } from "@/components/ui/button";
 import InputField from "@/components/forms/InputField";
 import SelectField from "@/components/forms/SelectField";
 import { INVESTMENT_GOALS, RISK_TOLERANCE_OPTIONS } from "@/lib/constants";
-import CountrySelectField from "@/components/forms/CountrySelectField";
+import { CountrySelectField } from "@/components/forms/CountrySelectField";
+import { CountryDropdown } from "@/components/ui/country-dropdown";
+import FooterLink from "@/components/forms/FooterLink";
 const SignUp = () => {
   const {
     register,
@@ -19,7 +21,7 @@ const SignUp = () => {
       country: "US",
       investmentGoals: "Growth",
       riskTolerance: "Medium",
-      perferredIndustry: "Technology",
+      preferredIndustry : "Technology",
     },
     mode: "onBlur",
   });
@@ -67,7 +69,13 @@ const SignUp = () => {
           validation={{ required: "Password is Required", minlength: 8 }}
         />
 
-        <CountrySelectField/>
+        <CountrySelectField
+          name="country"
+          label="Country"
+          error={errors.country}
+          required
+          control = {control}
+        />
 
         <SelectField
           name="investmentGoals"
@@ -95,6 +103,7 @@ const SignUp = () => {
         >
           {isSubmitting ? "Creating account" : "Let's Make Some Money"}
         </Button>
+        <FooterLink text="Already have an account" linkText="Sign In" href="/sign-in" />
       </form>
     </>
   );
