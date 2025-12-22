@@ -4,8 +4,18 @@ import Image from "next/image";
 import star from "../assets/starr.png";
 import icon from "../assets/discordtrading.png";
 import chart from "../assets/Screenshot 2025-11-20 110411.png"
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+import { auth } from "@/lib/better-auth/auth";
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = async ({ children }: { children: React.ReactNode }) => {
+
+  const session = await auth.api.getSession({headers: await headers()})
+
+  if(session?.user) {
+    redirect("/")
+  }
+
   return (
     <main className="auth-layout ">
       <section className="auth-left-section scrollbar-hide-default">

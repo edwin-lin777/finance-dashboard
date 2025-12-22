@@ -14,15 +14,17 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import NavItems from "./NavItems";
+import { signOut } from "@/lib/actions/auth.actions";
 
-const UserDropdown = () => {
+const UserDropdown = ({user} : {user: User}) => {
   const router: AppRouterInstance = useRouter();
 
   const handleSignOut = async () => {
+    await signOut();
     router.push("/sign-in");
   };
 
-  const user = { name: "Bev", email: "test@gmail.com" };
+  console.log("user at userDropdwon", user.name)
 
   return (
     <DropdownMenu>
@@ -34,7 +36,7 @@ const UserDropdown = () => {
           <Avatar>
             <AvatarImage />
             <AvatarFallback className="bg-yellow-300 text-yellow-700    text-sm">
-              {user.name[0]}
+              {user.name}
             </AvatarFallback>
           </Avatar>
           <div className="hidden md:flex flex-col items-start">

@@ -4,11 +4,16 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import InputField from "@/components/forms/InputField";
 import SelectField from "@/components/forms/SelectField";
-import { INVESTMENT_GOALS, RISK_TOLERANCE_OPTIONS } from "@/lib/constants";
+import { INVESTMENT_GOALS, PREFERRED_INDUSTRIES, RISK_TOLERANCE_OPTIONS } from "@/lib/constants";
 import { CountrySelectField } from "@/components/forms/CountrySelectField";
 import { CountryDropdown } from "@/components/ui/country-dropdown";
 import FooterLink from "@/components/forms/FooterLink";
+import { signUpWithEmail } from "@/lib/actions/auth.actions";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+
 const SignUp = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -27,10 +32,17 @@ const SignUp = () => {
   });
 
   const onSubmit = async (data: SignUpFormData) => {
+    console.log("submitted!")
     try {
+      const result = await signUpWithEmail(data);
+      console.log("result", result)
+      if(result.success) router.push('/');
       console.log(data);
     } catch (err: any) {
       console.log(err);
+      toast.error("Sign up failed", {
+        description: err instanceof Error ? err.message : "failed to create an account",
+      })
     }
   };
   return (
@@ -41,7 +53,7 @@ const SignUp = () => {
         <InputField
           name="fullName"
           label="Full Name"
-          placeholder="Please Enter Your Name"
+          placeholder="Please Enter your Name"
           register={register}
           error={errors.fullName}
           validation={{ required: "Full Name is Required", minlength: 2 }}
@@ -55,7 +67,7 @@ const SignUp = () => {
           error={errors.email}
           validation={{
             required: "Email is Required",
-            pattern: /^w+@\w+\.\w+$/,
+            pattern:  /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
             message: "Email adress is required",
           }}
         />
@@ -87,6 +99,15 @@ const SignUp = () => {
           required
         />
         <SelectField
+          name="preferredIndustry"
+          label="Preferred Industry"
+          placeholder="Select your preferred industry"
+          options={PREFERRED_INDUSTRIES}
+          control={control}
+          error={errors.preferredIndustry}
+          required
+        />
+        <SelectField
           name="riskTolerance"
           label="Risk Tolerance"
           placeholder="Select Perfered Risk"
@@ -96,10 +117,13 @@ const SignUp = () => {
           required
         />
 
+
+
         <Button
           type="submit"
-          disabled={isSubmitting}
+          onClick={() => console.log(" Button clicked!")}
           className="yellow-btn w-full mt-5"
+          
         >
           {isSubmitting ? "Creating account" : "Let's Make Some Money"}
         </Button>

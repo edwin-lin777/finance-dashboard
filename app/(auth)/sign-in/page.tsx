@@ -10,6 +10,7 @@ import {signInWithEmail, signUpWithEmail} from "@/lib/actions/auth.actions";
 
 import {signInEmail} from "better-auth/api";
 const SignIn = () => {
+    const router = useRouter();
     const {
       register,
       handleSubmit,
@@ -23,15 +24,17 @@ const SignIn = () => {
       mode: "onBlur",
     });
 
-     const onSubmit = async (data: SignInFormData) => {
+    const onSubmit = async (data: SignInFormData) => {
+    console.log("submitted sign IN PAGE!")
     try {
-      const result = await signInwithEmail(data);
-      const router = useRouter();
+      const result = await signInWithEmail(data);
+      console.log("result", result)
       if(result.success) router.push('/');
+      console.log(data);
     } catch (err: any) {
       console.log(err);
-      toast.error('sign in failed', {
-        description: err instanceof Error ? err.message : 'failed to sign in'
+      toast.error("Sign In failed", {
+        description: err instanceof Error ? err.message : "failed to sign in",
       })
     }
   };
@@ -50,7 +53,7 @@ const SignIn = () => {
           error={errors.email}
           validation={{
             required: "Email is Required",
-            pattern: /^w+@\w+\.\w+$/,
+            pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
             message: "Email adress is required",
           }}
         />

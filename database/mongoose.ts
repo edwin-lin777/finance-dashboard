@@ -16,7 +16,7 @@ if(!cached){
     cached = global.mongooseCache = {conn: null, promise: null};
 }
 
-export const connectToDatabse = async () => {
+export const connectToDatbase = async () => {
     if(!MONGODB_URI) throw new Error(` no mongo uri`)
 
     if(cached.conn) return cached.conn;
@@ -32,4 +32,5 @@ export const connectToDatabse = async () => {
     }
 
     console.log(`Connected to databse ${process.env.NODE_ENV} - ${MONGODB_URI}`)
+    return cached.conn;
 }
