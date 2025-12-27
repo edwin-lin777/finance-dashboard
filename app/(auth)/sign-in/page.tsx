@@ -29,11 +29,22 @@ const SignIn = () => {
     try {
       const result = await signInWithEmail(data);
       console.log("result", result)
-      if(result.success) router.push('/');
+      if(result.success) { router.push('/');
+
+      } else {
+        toast.error("Sign in Failed", { 
+          description: result.error || "failed",
+        })
+      }
+     
+
+
+
       console.log(data);
+
     } catch (err: any) {
-      console.log(err);
-      toast.error("Sign In failed", {
+      console.log("got to toast place", err);
+      toast.error("Sign In failed got to toast", {
         description: err instanceof Error ? err.message : "failed to sign in",
       })
     }
@@ -76,8 +87,10 @@ const SignIn = () => {
         >
           {isSubmitting ? "Signing In" : "Let's Make Some Money"}
         </Button>
+        <div>
         <FooterLink text="Don't have an account?" linkText="Sign up" href="/sign-up" />
-
+        <FooterLink text="Forgot password?" linkText="Reset Password" href="/forgot-password" />
+            </div>
      </form>
           
     

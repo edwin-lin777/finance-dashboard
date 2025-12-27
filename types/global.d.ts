@@ -22,6 +22,10 @@ declare global {
         required?: boolean;
     };
 
+   type ForgotPassword = {
+          email: string;
+      }
+
     type FormInputProps = {
         name: string;
         label: string;

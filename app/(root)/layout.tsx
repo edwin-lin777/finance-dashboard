@@ -13,7 +13,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
         name: session?.user.name,
         email: session?.user.email,
     }
-    try {
+    try { 
         console.log("user Name from console log: ", user.name)
     }
     catch (e:any) {

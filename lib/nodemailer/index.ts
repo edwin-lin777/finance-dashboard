@@ -23,3 +23,19 @@ export const sendWelcomeEmail = async ({email, name, intro}: WelcomeEmailData) =
     }
     await transporter.sendMail(mailOptions)
 }
+export const sendResetPasswordEmail = async ({ email, url }: ResetPasswordEmailData) => {
+  const mailOptions = {
+    from: '"Finance Dashboard <burgerTrades>"',
+    to: email,
+    subject: 'Reset Your Password',
+    html: `<p>Click the link below to reset your password:</p>
+           <p><a href="${url}">${url}</a></p>
+           <p>If you did not request a password reset, ignore this email.</p>`,
+  };
+
+  await transporter.sendMail(mailOptions);
+  console.log(`Reset password email sent to ${email}`);
+};
+
+
+
