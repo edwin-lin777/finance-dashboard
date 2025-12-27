@@ -11,9 +11,9 @@ const ResetPassword = () => {
    const searchParams = useSearchParams();
     const token = searchParams.get("token");
     const router = useRouter()
-  const {register, handleSubmit, formState: {errors, isSubmitting}} = useForm<ResetPassword>();
+  const {register, handleSubmit, formState: {errors, isSubmitting}} = useForm<ResetPasswordData>();
 
-  const onSubmit = async (data: ResetPassword) => {
+  const onSubmit = async (data: ResetPasswordData) => {
    
     try {
       if (!token){
