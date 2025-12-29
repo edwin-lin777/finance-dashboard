@@ -22,11 +22,25 @@ declare global {
         required?: boolean;
     };
 
+    type ResetPasswordData ={
+        password: string;
+        token: string,
+    }
+
+    type PositionCalculator = {
+        risk: number,
+        entry: number,
+        stopLoss: number,
+        takeProfit?: number,
+        accountSize: number,
+        precentRisk: number,
+    }
    type ForgotPassword = {
           email: string;
       }
 
     type FormInputProps = {
+        css?: string,
         name: string;
         label: string;
         placeholder: string;
@@ -64,6 +78,11 @@ declare global {
         label?: string;
         initialStocks: StockWithWatchlistStatus[];
     };
+
+    type ResetPasswordEmailData = {
+        email: string;
+        url: string;
+    }
 
     type WelcomeEmailData = {
         email: string;
