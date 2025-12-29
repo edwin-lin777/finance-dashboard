@@ -1,5 +1,16 @@
-// src/app/api/auth/[...all]/route.ts
-import { auth } from "@/lib/better-auth/auth";
-import { toNextJsHandler } from "better-auth/next-js";
 
-export const { POST, GET } = toNextJsHandler(auth);
+export const dynamic = 'force-dynamic';
+
+export async function GET() {
+  return Response.json({ 
+    status: 'ok', 
+    message: 'Inngest endpoint not configured' 
+  });
+}
+
+export async function POST() {
+  return Response.json({ 
+    status: 'ok', 
+    message: 'Inngest endpoint not configured' 
+  });
+}
