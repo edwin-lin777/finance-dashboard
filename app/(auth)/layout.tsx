@@ -10,10 +10,16 @@ import { auth } from "@/lib/better-auth/auth";
 
 const Layout = async ({ children }: { children: React.ReactNode }) => {
 
-  const session = await auth.api.getSession({headers: await headers()})
+  let session;
   
-  if(session?.user) redirect("/")
-  
+  try{
+    session = await auth.api.getSession({headers: await headers()});
+  } catch (e){
+    console.log("Error fetching session", e);
+  }
+   if (session?.user) {
+    redirect("/sign-up"); 
+  }
 
   return (
     <main className="auth-layout ">
