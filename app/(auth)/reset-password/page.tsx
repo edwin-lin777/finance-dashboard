@@ -1,5 +1,3 @@
-export const dynamic = 'force-dynamic';
-export const runtime = 'edge'; // Optional, but helps with static generation
 "use client"
 import React from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
