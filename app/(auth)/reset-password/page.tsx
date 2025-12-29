@@ -1,7 +1,9 @@
+export const dynamic = 'force-dynamic';
+export const runtime = 'edge'; // Optional, but helps with static generation
 "use client"
 import React from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { getAuth } from '@/lib/better-auth/auth'
+
 import { useForm } from 'react-hook-form'
 import InputField from '@/components/forms/InputField'
 import { resetPassword } from '@/lib/actions/auth.actions'
@@ -31,12 +33,6 @@ const ResetPassword = () => {
       console.log(e)
 
     }
-
-    
-
-
-
-
 
   }
 
