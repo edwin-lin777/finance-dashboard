@@ -16,7 +16,7 @@ if(!cached){
     cached = global.mongooseCache = {conn: null, promise: null};
 }
 
-export const connectToDatbase = async () => {
+export const connectToDatabase = async () => {
     if(!MONGODB_URI) throw new Error(` no mongo uri`)
 
     if(cached.conn) return cached.conn;

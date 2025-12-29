@@ -8,7 +8,7 @@ import {motion} from "framer-motion";
 import InputField from '@/components/forms/InputField'
 
 
-const page = () => {
+const PositionCalculatorPage = () => {
 
   
 
@@ -178,5 +178,5 @@ h-9 px-4 py-2 has-[>svg]:px-3
   )
 }
 
-export default page
+export default PositionCalculatorPage
 

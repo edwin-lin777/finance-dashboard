@@ -1,3 +1,4 @@
+/*
 import {inngest} from "@/lib/inngest/client"
 import { step } from "inngest"
 import { PERSONALIZED_WELCOME_EMAIL_PROMPT } from "./prompts"
@@ -53,3 +54,5 @@ export const sendSignUpEmail = inngest.createFunction(
     } 
 
 )
+
+*/

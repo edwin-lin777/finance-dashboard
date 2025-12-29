@@ -1,8 +1,8 @@
-import { connectToDatabse } from "../database/mongoose";
+import { connectToDatabase } from "../database/mongoose";
 
 async function main() {
   try {   
-    await connectToDatabse();
+    await connectToDatabase();
     // If connectToDatabase resolves without throwing, connection is OK
     console.log("OK: Database connection succeeded");
     process.exit(0);

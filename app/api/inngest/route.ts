@@ -1,9 +1,5 @@
-import {serve} from "inngest/next";
-import {inngest} from "@/lib/inngest/client";
-import { sendSignUpEmail } from "@/lib/inngest/functions";
+// src/app/api/auth/[...all]/route.ts
+import { auth } from "@/lib/better-auth/auth";
+import { toNextJsHandler } from "better-auth/next-js";
 
-
-export const { GET, POST, PUT } = serve({
-    client: inngest,
-    functions: [sendSignUpEmail],
-}) 
+export const { POST, GET } = toNextJsHandler(auth);

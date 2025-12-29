@@ -7,7 +7,7 @@ import { forgotPassword } from '@/lib/actions/auth.actions';
 
 import { toast } from 'sonner';
 
-const page = () => {
+const ForgotPasswordPage = () => {
 
    
     const {register, handleSubmit, formState: {errors, isSubmitting}} = useForm<ForgotPassword>();
@@ -61,4 +61,4 @@ const page = () => {
   )
 }
 
-export default page
+export default ForgotPasswordPage
