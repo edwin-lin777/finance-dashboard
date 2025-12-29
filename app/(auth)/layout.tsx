@@ -1,4 +1,4 @@
-import Header from "@/components/Header";
+export const dynamic = "force-dynamic";
 import Link from "next/link";
 import Image from "next/image";
 import star from "../assets/starr.png";
