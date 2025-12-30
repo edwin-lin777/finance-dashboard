@@ -31,9 +31,9 @@ const PositionCalculatorPage = () => {
         animate={{opacity: 1, y: 0}}
         transition={{duration: 1, delay: 0.35}}
         >
-            <div>
+          
         <VantaBackground />
-            </div>
+            
          
   
     <div className="w-full">
