@@ -2,8 +2,8 @@ import TradingViewWidget from "@/components/TradingViewWidget";
 import {Button} from "@/components/ui/button";
 import { MARKET_OVERVIEW_WIDGET_CONFIG } from "@/lib/constants";
 import { TOP_STORIES_WIDGET_CONFIG } from "@/lib/constants";
-import { MARKET_DATA_WIDGET_CONFIG } from "@/lib/constants";
-
+import { SCREENER_CONFIG } from "@/lib/constants";
+import {HEATMAP_WIDGET_CONFIG} from "@/lib/constants";
 
 const Home = () => {
     const scriptTemplate = "https://s3.tradingview.com/external-embedding/embed-widget-"
@@ -12,7 +12,7 @@ const Home = () => {
         <section className="grid w-full gap-8 home-section">
             <div className="md:col-span-1 xl:col-span-1">
                 <TradingViewWidget
-                title="Market Overview"
+                title="S&P Overview"
                 scriptURL={`${scriptTemplate}advanced-chart.js`}
                 config = {MARKET_OVERVIEW_WIDGET_CONFIG}
                 className="custom-chart"
@@ -25,7 +25,7 @@ const Home = () => {
                <TradingViewWidget
                 title="Stocks Heatmap"
                 scriptURL={`${scriptTemplate}stock-heatmap.js`}
-                config = {MARKET_OVERVIEW_WIDGET_CONFIG}
+                config = {HEATMAP_WIDGET_CONFIG}
                 className="custom-chart"
                 height= {600}
                 />  
@@ -46,9 +46,8 @@ const Home = () => {
         <div className="h-full md:col-span-1 xl:col-span-2">
 
                <TradingViewWidget
-                
-                scriptURL={`${scriptTemplate}market-quotes.js`}
-                config = {MARKET_DATA_WIDGET_CONFIG}
+                scriptURL={`${scriptTemplate}screener.js`}
+                config = {SCREENER_CONFIG}
                 className="custom-chart"
                 height= {600}
                 />  
