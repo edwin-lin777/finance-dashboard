@@ -6,9 +6,9 @@ import FooterLink from '@/components/forms/FooterLink';
 import { Button } from '@/components/ui/button';
 import {toast} from "sonner";
 import {useRouter} from "next/navigation";
-import {signInWithEmail, signUpWithEmail} from "@/lib/actions/auth.actions";
+import {getGoogleSignInUrl, signInWithEmail,} from "@/lib/actions/auth.actions";
 
-import {signInEmail} from "better-auth/api";
+
 const SignIn = () => {
     const router = useRouter();
     const {
@@ -49,13 +49,32 @@ const SignIn = () => {
       })
     }
   };
-
-
-
+  /*
+     const handleLogin = async () => {
+    try {
+      const { success, url } = await getGoogleSignInUrl();
+      if (success && url) {
+        window.location.href = url;
+      
+      }
+    } catch (err) {
+      console.error("Google sign in failed", err);
+    }
+  };
+*/
   return (
     <>
      <h1 className="form-title">Welcome Back</h1>
      <form  onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+      
+       {/* <div className="flex  justify-center"> 
+       <Button onClick={handleLogin} className=" hover:cursor-pointer"> Sign In with Google</Button>
+
+        </div>
+      
+        <h1 className="flex justify-center">Or Continue with</h1>
+          */}
+
        <InputField
           name="email"
           label="Email"
@@ -78,7 +97,7 @@ const SignIn = () => {
           error={errors.password}
           validation={{ required: "Password is Required", minlength: 8 }}
         />
-
+          
 
           <Button
           type="submit"

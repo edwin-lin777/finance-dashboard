@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button'
 import { useForm } from 'react-hook-form'
 import {motion} from "framer-motion";
 import InputField from '@/components/forms/InputField'
+import VantaBackground from '@/components/ui/vantabackground'
+
 
 
 const PositionCalculatorPage = () => {
@@ -26,11 +28,11 @@ const PositionCalculatorPage = () => {
   return (
    
     <motion.div
-    initial={{opacity: 0, y: -35}}
+    initial={{opacity: 0, y: -25}}
         animate={{opacity: 1, y: 0}}
-        transition={{duration: 2, delay: 0.35}}
+        transition={{duration: 1, delay: 0.35}}
         >
-
+          <VantaBackground/>
   
     <div className="w-full">
       <div className="text-4xl font-bold flex flex-row justify-center pt-7 font-sans">

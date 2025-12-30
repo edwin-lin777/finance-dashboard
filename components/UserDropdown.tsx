@@ -53,7 +53,7 @@ const UserDropdown = ({user} : {user: User}) => {
           <Avatar className="h-10 w-10">
             <AvatarImage />
             <AvatarFallback className="bg-yellow-300 text-yellow-700    text-sm">
-              {user.name[0]}
+              {user.name?.[0]}
             </AvatarFallback>
           </Avatar>
           <div className="flex flex-col">

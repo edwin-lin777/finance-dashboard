@@ -2,7 +2,7 @@ export const dynamic = "force-dynamic";
 import Link from "next/link";
 import Image from "next/image";
 import star from "../assets/starr.png";
-import icon from "../assets/discordtrading.png";
+import icon from "../assets/discordtrading-removebg-preview.png";
 import chart from "../assets/Screenshot 2025-11-20 110411.png"
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";

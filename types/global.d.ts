@@ -89,12 +89,28 @@ declare global {
         name: string;
         intro: string;
     };
+    
 
     type User = {
-        id: string;
-        name: string;
-        email: string;
+        id?: string;
+        name?: string;
+        email?: string;
     };
+    type VantaGlobeOptions = {
+         el: HTMLElement;
+    THREE: any;
+    mouseControls?: boolean;
+    touchControls?: boolean;
+    gyroControls?: boolean;
+    minHeight?: number;
+    minWidth?: number;
+    scale?: number;
+    scaleMobile?: number;
+    color?: number | string;
+    backgroundColor?: number | string;
+    size?: number;
+    [key: string]: any;
+    }
 
     type Stock = {
         symbol: string;

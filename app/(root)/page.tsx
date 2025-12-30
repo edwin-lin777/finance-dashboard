@@ -43,7 +43,7 @@ const Home = () => {
                 />
             </div>
 
-        <div className="h-full md:col-span1 xl:col-span-2">
+        <div className="h-full md:col-span-1 xl:col-span-2">
 
                <TradingViewWidget
                 

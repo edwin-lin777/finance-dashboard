@@ -7,7 +7,7 @@ import SelectField from "@/components/forms/SelectField";
 import { INVESTMENT_GOALS, PREFERRED_INDUSTRIES, RISK_TOLERANCE_OPTIONS } from "@/lib/constants";
 import { CountrySelectField } from "@/components/forms/CountrySelectField";
 import FooterLink from "@/components/forms/FooterLink";
-import { signUpWithEmail } from "@/lib/actions/auth.actions";
+import {  getGoogleSignInUrl, signUpWithEmail } from "@/lib/actions/auth.actions";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
@@ -44,11 +44,32 @@ const SignUp = () => {
       })
     }
   };
+  /*
+      const handleLogin = async () => {
+    try {
+      const { success, url } = await getGoogleSignInUrl();
+      if (success && url) {
+        window.location.href = url;
+        router.push('/'); 
+      }
+    } catch (err) {
+      console.error("Google sign in failed", err);
+    }
+  };
+  */
   return (
     <>
       <h1 className="form-title">Sign Up & Personalize</h1>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+     
+        <div className="flex  justify-center"> 
+            {/*
+       <Button onClick={handleLogin } className=" hover:cursor-pointer"> Sign up with Google</Button>
+*/}
+        </div>
+      
+        <h1 className="flex justify-center">Or Continue with</h1>
         <InputField
           name="fullName"
           label="Full Name"

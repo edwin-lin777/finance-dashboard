@@ -27,8 +27,17 @@ export const signInWithEmail = async ({ email, password }: SignInFormData) => {
         return { success: false, error: "Invalid email or password" }
     }
 } 
-
-
+export const getGoogleSignInUrl = async () => {
+  try {
+    const response = await auth.api.signInSocial({
+      body: { callbackURL: "/", provider: "google" },
+    });
+    return { success: true, url: response.url };
+  } catch (e) {
+    console.error("Google sign in failed", e);
+    return { success: false, error: "Google sign in failed" };
+  }
+};
 
 export const forgotPassword = async ({email}: ForgotPassword) => {
     try {
@@ -42,10 +51,8 @@ export const forgotPassword = async ({email}: ForgotPassword) => {
         console.log(e)
         return {success: true, error: "Failed to reset"}
     }
-    
-
-
 }
+
 
 export const resetPassword = async ({token, password}: {token: string, password: string}) => {
     try {
