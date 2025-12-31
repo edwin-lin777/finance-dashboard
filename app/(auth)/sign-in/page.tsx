@@ -1,52 +1,50 @@
-"use client"
-import React from 'react'
-import { useForm } from 'react-hook-form';
-import InputField from '@/components/forms/InputField';
-import FooterLink from '@/components/forms/FooterLink';
-import { Button } from '@/components/ui/button';
-import {toast} from "sonner";
-import {useRouter} from "next/navigation";
-import {getGoogleSignInUrl, signInWithEmail,} from "@/lib/actions/auth.actions";
-
+"use client";
+import React from "react";
+import { useForm } from "react-hook-form";
+import InputField from "@/components/forms/InputField";
+import FooterLink from "@/components/forms/FooterLink";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import {
+  getGoogleSignInUrl,
+  signInWithEmail,
+} from "@/lib/actions/auth.actions";
 
 const SignIn = () => {
-    const router = useRouter();
-    const {
-      register,
-      handleSubmit,
-      control,
-      formState: { errors, isSubmitting },
-    } = useForm<SignInFormData>({
-      defaultValues: {
-        email: "",
-        password: "",
-      },
-      mode: "onBlur",
-    });
+  const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors, isSubmitting },
+  } = useForm<SignInFormData>({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+    mode: "onBlur",
+  });
 
-    const onSubmit = async (data: SignInFormData) => {
-    console.log("submitted sign IN PAGE!")
+  const onSubmit = async (data: SignInFormData) => {
+    console.log("submitted sign IN PAGE!");
     try {
       const result = await signInWithEmail(data);
-      console.log("result", result)
-      if(result.success) { router.push('/');
-
+      console.log("result", result);
+      if (result.success) {
+        router.push("/");
       } else {
-        toast.error("Sign in Failed", { 
+        toast.error("Sign in Failed", {
           description: result.error || "failed",
-        })
+        });
       }
-     
-
-
 
       console.log(data);
-
     } catch (err: any) {
       console.log("got to toast place", err);
       toast.error("Sign In failed got to toast", {
         description: err instanceof Error ? err.message : "failed to sign in",
-      })
+      });
     }
   };
   /*
@@ -64,10 +62,9 @@ const SignIn = () => {
 */
   return (
     <>
-     <h1 className="form-title">Welcome Back</h1>
-     <form  onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-      
-       {/* <div className="flex  justify-center"> 
+      <h1 className="form-title">Welcome Back</h1>
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+        {/* <div className="flex  justify-center"> 
        <Button onClick={handleLogin} className=" hover:cursor-pointer"> Sign In with Google</Button>
 
         </div>
@@ -75,7 +72,7 @@ const SignIn = () => {
         <h1 className="flex justify-center">Or Continue with</h1>
           */}
 
-       <InputField
+        <InputField
           name="email"
           label="Email"
           placeholder="Please Enter Your email"
@@ -97,9 +94,8 @@ const SignIn = () => {
           error={errors.password}
           validation={{ required: "Password is Required", minlength: 8 }}
         />
-          
 
-          <Button
+        <Button
           type="submit"
           disabled={isSubmitting}
           className="yellow-btn w-full mt-5"
@@ -107,14 +103,20 @@ const SignIn = () => {
           {isSubmitting ? "Signing In" : "Let's Make Some Money"}
         </Button>
         <div>
-        <FooterLink text="Don't have an account?" linkText="Sign up" href="/sign-up" />
-        <FooterLink text="Forgot password?" linkText="Reset Password" href="/forgot-password" />
-            </div>
-     </form>
-          
-    
+          <FooterLink
+            text="Don't have an account?"
+            linkText="Sign up"
+            href="/sign-up"
+          />
+          <FooterLink
+            text="Forgot password?"
+            linkText="Reset Password"
+            href="/forgot-password"
+          />
+        </div>
+      </form>
     </>
-  )
-}
+  );
+};
 
-export default SignIn
+export default SignIn;

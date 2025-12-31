@@ -4,10 +4,17 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import InputField from "@/components/forms/InputField";
 import SelectField from "@/components/forms/SelectField";
-import { INVESTMENT_GOALS, PREFERRED_INDUSTRIES, RISK_TOLERANCE_OPTIONS } from "@/lib/constants";
+import {
+  INVESTMENT_GOALS,
+  PREFERRED_INDUSTRIES,
+  RISK_TOLERANCE_OPTIONS,
+} from "@/lib/constants";
 import { CountrySelectField } from "@/components/forms/CountrySelectField";
 import FooterLink from "@/components/forms/FooterLink";
-import {  getGoogleSignInUrl, signUpWithEmail } from "@/lib/actions/auth.actions";
+import {
+  getGoogleSignInUrl,
+  signUpWithEmail,
+} from "@/lib/actions/auth.actions";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
@@ -25,23 +32,31 @@ const SignUp = () => {
       country: "US",
       investmentGoals: "Growth",
       riskTolerance: "Medium",
-      preferredIndustry : "Technology",
+      preferredIndustry: "Technology",
     },
     mode: "onBlur",
   });
 
   const onSubmit = async (data: SignUpFormData) => {
-    console.log("submitted!")
+    console.log("submitted!");
     try {
       const result = await signUpWithEmail(data);
-      console.log("result", result)
-      if(result.success) router.push('/');
-      console.log(data);
+      console.log("result", result);
+
+      if (result.success) {
+        router.push("/");
+        toast.success("Sign up Success");
+      }
+      if (!result.success) {
+        toast.error(result.data);
+      }
     } catch (err: any) {
-      console.log(err);
+      toast.error("Failure");
       toast.error("Sign up failed", {
-        description: err instanceof Error ? err.message : "failed to create an account",
-      })
+        description:
+          err instanceof Error ? err.message : "failed to create an account",
+      });
+      console.log("adsfeafesfH IIII HIH IHIHHI ", err);
     }
   };
   /*
@@ -62,13 +77,12 @@ const SignUp = () => {
       <h1 className="form-title">Sign Up & Personalize</h1>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-     
-        <div className="flex  justify-center"> 
-            {/*
+        <div className="flex  justify-center">
+          {/*
        <Button onClick={handleLogin } className=" hover:cursor-pointer"> Sign up with Google</Button>
 */}
         </div>
-      
+
         <h1 className="flex justify-center">Or Continue with</h1>
         <InputField
           name="fullName"
@@ -87,7 +101,7 @@ const SignUp = () => {
           error={errors.email}
           validation={{
             required: "Email is Required",
-            pattern:  /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+            pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
             message: "Email adress is required",
           }}
         />
@@ -106,7 +120,7 @@ const SignUp = () => {
           label="Country"
           error={errors.country}
           required
-          control = {control}
+          control={control}
         />
 
         <SelectField
@@ -137,17 +151,18 @@ const SignUp = () => {
           required
         />
 
-
-
         <Button
           type="submit"
           onClick={() => console.log(" Button clicked!")}
           className="yellow-btn w-full mt-5"
-          
         >
           {isSubmitting ? "Creating account" : "Let's Make Some Money"}
         </Button>
-        <FooterLink text="Already have an account" linkText="Sign In" href="/sign-in" />
+        <FooterLink
+          text="Already have an account"
+          linkText="Sign In"
+          href="/sign-in"
+        />
       </form>
     </>
   );
