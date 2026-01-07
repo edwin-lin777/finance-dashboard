@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils'
 
         </label>
         <Input 
-           
+            step={step}
             type={type}
             id={name}
             placeholder={placeholder}

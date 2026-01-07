@@ -40,6 +40,7 @@ declare global {
       }
 
     type FormInputProps = {
+        step?: string,
         css?: string,
         name: string;
         label: string;
