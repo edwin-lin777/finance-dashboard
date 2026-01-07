@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Stock Dashboard",
+  title: "Finance Dashboard",
   description: "Buyside-Sellside Liqudiity",
 };
 
