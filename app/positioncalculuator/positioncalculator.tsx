@@ -70,6 +70,7 @@ const PositionCalculatorPage = () => {
        error={errors.risk}
        placeholder="Enter % Risk"
        register={register}
+       step = "any"
        type="number"
        validation={{
         required: "Risk Precentage is required",
@@ -87,6 +88,7 @@ const PositionCalculatorPage = () => {
        name="accountSize"
        placeholder="Enter account size"
        register={register}
+       step = "any"
        type="number"
        error={errors.accountSize}
        validation={{
@@ -103,6 +105,7 @@ const PositionCalculatorPage = () => {
        label="Price Entry"
        css="[appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
        name="entry"
+       step = "any"
        placeholder="Enter entry"
        register={register}
        type="number"
@@ -125,6 +128,7 @@ const PositionCalculatorPage = () => {
        register={register}
        error={errors.stopLoss}
        type="number"
+       step = "any"
        validation={{
         required: "Stop Loss is Required!",
         min: {
@@ -142,7 +146,7 @@ const PositionCalculatorPage = () => {
        placeholder="Enter Take Profit"
        register={register}
        type="number"
-     
+       step = "any"
        validation={{
         
         min: {

@@ -41,12 +41,11 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
       <section className="auth-right-section">
         <div className="z-10 relative lg:mt-4 lg:mb-16">
           <blockquote>
-            This app really turned my trading into reality and really helped me
-            take better trades.
+           Trading app that really helps me look at intraday market and movements
           </blockquote>
           <div className="flex items-center justify-between">
             <div>
-              <cite className="auth-testimonial-author">- HBBCM Tester</cite>
+              <cite className="auth-testimonial-author">- Trader</cite>
               <p className="max-md:text-xs text-gray-500"> Retail Investor </p>
             </div>
           <div className="flex items-center gap-1 mt-0.5">

@@ -1,7 +1,7 @@
  import React from 'react'
 import { Input } from '../ui/input'
 import { cn } from '@/lib/utils'
- const InputField = ({ css, name, label, placeholder, type="text", register, error, validation, disabled, value}: FormInputProps) => {
+ const InputField = ({ css, name, label, step, placeholder, type="text", register, error, validation, disabled, value}: FormInputProps) => {
    return (
      <div className="space-y-2">
         <label
